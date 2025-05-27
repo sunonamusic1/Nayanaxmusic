@@ -7,29 +7,29 @@ from pyrogram import filters
 load_dotenv()
 
 # Get this value from my.telegram.org/apps.
-API_ID = int(getenv("API_ID", "28294093"))
-API_HASH = getenv("API_HASH", "f24d982c45ab2f69a6cb8c0fee9630bd")
+API_ID = int(getenv("API_ID", "23042400"))
+API_HASH = getenv("API_HASH", "b4f094c26faffa1c9450e3f61266c91b)
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN", None)
 # Add Owner Username without @ 
-OWNER_USERNAME = getenv("OWNER_USERNAME","ll_KSD_ll")
+OWNER_USERNAME = getenv("OWNER_USERNAME","NOBITA_XD1")
 # Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME" , "Kittu_music_robot")
+BOT_USERNAME = getenv("BOT_USERNAME" , "TOPTEN_MUSIC_BOT")
 # Don't Add style font 
 BOT_NAME = getenv("BOT_NAME" , "Kittu")
 #get Your Assistant User name
 ASSUSERNAME = getenv("ASSUSERNAME" , "itz_m3_kittu")
-EVALOP = list(map(int, getenv("EVALOP", "8142003954  8142003954").split()))
+EVALOP = list(map(int, getenv("NOBITA_XD1", "7861988028  7861988028").split()))
 # Get your mongo url from cloud.mongodb.com
 MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 170000))
 
 # Chat id of a group for logging bot's activities
-LOGGER_ID = int(getenv("LOGGER_ID", -1002302799359))
+LOGGER_ID = int(getenv("LOGGER_ID", -1002657052717))
 
 # Get this value from  on Telegram by /id
-OWNER_ID = int(getenv("OWNER_ID", 8142003954))
+OWNER_ID = int(getenv("OWNER_ID", 7861988028))
 
 ## Fill these variables if you're deploying on heroku.
 # Your heroku app name
@@ -43,7 +43,7 @@ COOKIES_URL=getenv("COOKIES_URL" , "https://gist.githubusercontent.com/sparrow96
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/ifgovtjoftibcdjpvd8nfiokbfobffob0vrb8bd/Riya1",
+    "https://github.com/sachinopboy2/smartnew",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Master")
 GIT_TOKEN = getenv(
