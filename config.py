@@ -14,7 +14,7 @@ BOT_TOKEN = getenv("BOT_TOKEN", None)
 # Add Owner Username without @ 
 OWNER_USERNAME = getenv("OWNER_USERNAME","NOBITA_XD1")
 # Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME" , "TOPTEN_MUSIC_BOT")
+BOT_USERNAME = getenv("BOT_USERNAME" , "Nayana_music_bot")
 # Don't Add style font 
 BOT_NAME = getenv("BOT_NAME" , "Kittu")
 #get Your Assistant User name
@@ -43,7 +43,7 @@ COOKIES_URL=getenv("COOKIES_URL" , "https://gist.githubusercontent.com/sparrow96
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/sachinopboy2/smartnew",
+    "https://github.com/sunonamusic1/Nayanaxmusic",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Master")
 GIT_TOKEN = getenv(
