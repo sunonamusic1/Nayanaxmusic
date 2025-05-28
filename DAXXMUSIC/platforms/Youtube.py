@@ -1,10 +1,35 @@
-import asyncio, httpx, os, re, yt_dlp
+import asyncio, httpx, yt_dlp, os
+import glob, re, random, json, requests
 
 from typing import Union
 from pyrogram.types import Message
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 from pyrogram.enums import MessageEntityType
-from youtubesearchpython.__future__ import VideosSearch
+from concurrent.futures import ThreadPoolExecutor
+from youtubesearchpython.__future__ import VideosSearch, CustomSearch
 
+from BrandrdXMusic import LOGGER
+from BrandrdXMusic.utils.database import is_on_off
+from BrandrdXMusic.utils.formatters import time_to_seconds
+
+#=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×[ NO NEED COOKIES ]=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×
+
+def cookie_txt_file():
+    try:
+        folder_path = f"{os.getcwd()}/cookies"
+        filename = f"{os.getcwd()}/cookies/logs.csv"
+        txt_files = glob.glob(os.path.join(folder_path, '*.txt'))
+        if not txt_files:
+            raise FileNotFoundError("No .txt files found in the specified folder.")
+        cookie_txt_file = random.choice(txt_files)
+        with open(filename, 'a') as file:
+            file.write(f'Choosen File : {cookie_txt_file}\n')
+        return f"""cookies/{str(cookie_txt_file).split("/")[-1]}"""
+    except:
+        pass
+        
+#=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×
 
 def time_to_seconds(time):
     stringt = str(time)
@@ -26,19 +51,33 @@ async def shell_cmd(cmd):
     return out.decode("utf-8")
 
 
-
 async def get_stream_url(query, video=False):
-    api_url = "http://46.250.243.87:1470/youtube"
-    api_key = "1a873582a7c83342f961cc0a177b2b26"
-    
-    async with httpx.AsyncClient(timeout=60) as client:
-        params = {"query": query, "video": video, "api_key": api_key}
-        response = await client.get(api_url, params=params)
-        if response.status_code != 200:
-            return ""
-        info = response.json()
-        return info.get("stream_url")
+    apis = [
+        {
+            "url": "http://5.249.150.146:1470/youtube",
+            "key": "bd9206c4e3f64f009d35e194ac7b17d8"
+        },
+        {
+            "url": "http://5.249.150.55:1470/youtube",
+            "key": "SANATANIxTECH"
+        }
+    ]
 
+    async with httpx.AsyncClient(timeout=60) as client:
+        for api in apis:
+            try:
+                params = {"query": query, "video": video, "api_key": api["key"]}
+                response = await client.get(api["url"], params=params)
+
+                if response.status_code == 200:
+                    info = response.json()
+                    stream_url = info.get("stream_url")
+                    if stream_url:
+                        return stream_url
+            except Exception:
+                continue
+
+    return ""
 
 
 class YouTubeAPI:
